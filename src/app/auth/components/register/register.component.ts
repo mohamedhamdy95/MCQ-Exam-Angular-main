@@ -9,10 +9,12 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   userForm!:FormGroup;
+  studentList:any[]=[]
   constructor(private fb:FormBuilder , private AuthService:AuthService , private router:Router ) { }
 
   ngOnInit(): void {
     this.creatForm()
+    this.getUsers()
   }
   // function to creat suer form
   creatForm(){
@@ -24,6 +26,14 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+  getUsers():void{
+    this.AuthService.getAllUsers().subscribe({
+      next:(res)=>{
+        this.studentList = res
+        console.log(this.studentList)
+      }
+    })
+  }
 
   submit():void{
     const model ={
@@ -31,13 +41,18 @@ export class RegisterComponent implements OnInit {
       email : this.userForm.value.email,
       password : this.userForm.value.password,
     }
-    this.AuthService.creatUser(model).subscribe({
-      next:(res)=>{
-        console.log(res)
-        this.router.navigate(['/subjects'])
-      }
-    })
+
+    let index = this.studentList.findIndex(item => item.email == this.userForm.value.email)
+    if(index != -1){
+      alert("هذا الحساب موجود بالفعل")
+    }else{
+      this.AuthService.creatUser(model).subscribe({
+        next:(res)=>{
+          console.log(res)
+          alert("تم التسجيل بنجاح")
+          this.router.navigate(['/subjects'])
+        }
+      })
+    }
   }
-
-
 }

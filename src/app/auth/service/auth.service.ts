@@ -7,12 +7,16 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-
   constructor(private http:HttpClient) { }
-
   creatUser(model:any):Observable<any>{
-   return this.http.post(environment.baseUrl+ 'student',model)
+   return this.http.post(environment.baseUrl+'student',model)
+  }
+
+
+  getAllUsers():Observable<any>{
+    return this.http.get(environment.baseUrl+'student') 
   }
 
 
 }
+
