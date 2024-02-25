@@ -1,24 +1,23 @@
 {
-  "doctor": [],
-  "student": [
+  "students": [
     {
-      "id": "f29d",
+      "id": 1,
       "username": "mohamed",
-      "email": "mohamedhamdy9090@gmail.com",
-      "password": "123456"
-    },
-    {
-      "id": "cd9f",
-      "username": "mido",
-      "email": "mido@gmail.com",
-      "password": "123456"
-    },
-    {
-      "id": "b5a9",
-      "username": "fgdgdf",
-      "email": "mohamedhamdy1090@gmail.com",
+      "email": "mohamed@gmail.com",
       "password": "123"
     }
   ],
-  "login": []
+  "doctor": [
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "admin@admin.com",
+      "password": "123"
+    }
+  ],
+  "login": [
+    {
+      "id": 1
+    }
+  ]
 }

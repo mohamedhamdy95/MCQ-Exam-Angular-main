@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
   }
 
   getUsers():void{
-    this.AuthService.getAllUsers().subscribe({
+    this.AuthService.getAllUsers("students").subscribe({
       next:(res)=>{
         this.studentList = res
         console.log(this.studentList)
